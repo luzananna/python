@@ -7,9 +7,13 @@ Using Pandas for data processing and Matplotlib for visualizations.
 
 This project analyzes a dataset of Spotify tracks and provides insights into:
 	- Most popular songs
+
 	- Artists with the highest average popularity
+
 	- Loudest and most energetic tracks
+
 	- Ranking songs based on multiple musical features
+    
 	- Visual comparison of top songs using bar charts
 
 The goal was to practice data cleaning, data manipulation, and basic visualization using real-world data.
@@ -26,8 +30,11 @@ The project also includes a simple data visualization: a bar chart created with 
 
 ## Structure
 data_cleaning.py     # Removing columns, sorting, preprocessing
+
 feature_stats.py     # Max loudness/energy/valence, top tracks
+
 scoring.py           # Combined normalized feature score
+
 visualization.py     # Matplotlib chart
 
 

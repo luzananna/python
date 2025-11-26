@@ -1,46 +1,55 @@
 # src/analyze_data.py
 from collections import Counter
+import os
 import json
+from collections import Counter
 
 def load_tracks(filename="tracks.json"):
-    """Загружаем список треков из файла"""
-    with open(filename, "r", encoding="utf-8") as f:
-        return json.load(f)
+    """Load playlists dictionary with tracks from a JSON file."""
+    base_dir = os.path.dirname(__file__)   
+    path = os.path.join(base_dir, "..", filename) 
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)    
+
 
 def find_common_artists(playlists: dict):
-    """Находит общих исполнителей между плейлистами"""
-    sets = {name: set(track["artist"] for track in tracks) 
-            for name, tracks in playlists.items()}
-    common = set.intersection(*sets.values())
+    """Return artists that appear in all playlists."""
+    artist_sets = {
+        name: set(track["artist"] for track in tracks)
+        for name, tracks in playlists.items()
+    }
+    common = set.intersection(*artist_sets.values())
     return common
 
+
 def top_artists(tracks, n=5):
-    """Находит топ-n исполнителей по частоте"""
+    """Return the top-n most frequent artists in the given list of tracks."""
     artists = [t["artist"] for t in tracks]
     counter = Counter(artists)
     return counter.most_common(n)
 
 
 if __name__ == "__main__":
-    # Загружаем собранные данные
+    # Load collected playlist data
     playlists = load_tracks()
 
-    # Общие исполнители
+    # Common artists among all playlists
     common = find_common_artists(playlists)
-    print(f"👥 Общие исполнители: {list(common)}\n")
+    print(f"Common artists across all playlists: {list(common)}\n")
 
-    # Топ-5 для каждого плейлиста
+    # Top-5 artists for each playlist
     for pl_name, pl_tracks in playlists.items():
-        print(f"🏆 Топ-5 исполнителей ({pl_name}):")
+        print(f"Top-5 artists ({pl_name}):")
         for artist, count in top_artists(pl_tracks, n=5):
-            print(f"  {artist}: {count} треков")
+            print(f"  {artist}: {count} tracks")
         print()
 
-    # Топ-5 общий (все плейлисты вместе)
+    # Combined Top-5 artists across *all* playlists
     all_tracks = []
     for pl_tracks in playlists.values():
         all_tracks.extend(pl_tracks)
 
-    print("🌍 Общий топ-5 исполнителей (все плейлисты):")
+    print("Global Top-5 Artists (all playlists combined):")
     for artist, count in top_artists(all_tracks, n=5):
-        print(f"  {artist}: {count} треков")
+        print(f"  {artist}: {count} tracks")
+        

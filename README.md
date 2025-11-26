@@ -10,9 +10,7 @@ My goal is to build a solid foundation, strengthen my portfolio, and consistentl
 ```
 python/
 │
-├── Basic tasks/           
-│
-├── Mini-projects/   
+├── Basic tasks/            
 │
 ├── University projects/ 
 │

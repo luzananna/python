@@ -39,3 +39,70 @@ scoring.py           # Combined normalized feature score
 visualization.py     # Matplotlib chart
 
 
+## How to Run the Project
+
+1) Сlone the repository
+
+```
+git clone https://github.com/luzananna/spotify-analysis.git
+
+cd spotify-analysis
+```
+
+2) Create a virtual environment
+```
+python3 -m venv venv
+
+source venv/bin/activate
+```
+
+3) Install dependencies
+```
+pip install -r requirements.txt
+```
+
+4) Run analysis scripts
+```
+python3 src/data_cleaning.py
+
+python3 src/feature_stats.py
+
+python3 src/scoring.py
+
+python3 src/visualization.py
+```
+
+## Example Output
+```
+Common artists: ['Billie Eilish', 'Lady Gaga', 'Taylor Swift', 'Hozier']
+
+Top-5 artists (Top 50 Global):
+  The Weeknd: 3 tracks
+  Ed Sheeran: 3 tracks
+  Post Malone: 3 tracks
+  Harry Styles: 2 tracks
+  Billie Eilish: 2 tracks
+
+Top-5 artists (Top 50 Czech Republic):
+  Umur Anil Gokdag: 10 tracks
+  MNA55: 4 tracks
+  coolerthanyourboyfriend.: 4 tracks
+  David Guetta: 3 tracks
+  sombr: 2 tracks
+
+Global Top-5 artists (all playlists combined):
+  Umur Anil Gokdag: 10 tracks
+  MNA55: 4 tracks
+  coolerthanyourboyfriend.: 4 tracks
+  The Weeknd: 3 tracks
+  Ed Sheeran: 3 tracks
+  ```
+
+## Example bar chart (saved as PNG):
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image.png)
